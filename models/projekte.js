@@ -1,34 +1,24 @@
 var mongoose = require('mongoose');
 
-var nutzerSchema = mongoose.Schema({
-    name: String,
-    email: String,
-    passwort: String,
-    firma: String,
-});
-
 var projekteSchema = mongoose.Schema({
     name: String,
     beschreibung: String,
-    letzteAenderung: Date,
-    schritte: Array,
+    letzteAenderung: { type: Date, default: Date.now },
+    schritte: [
+        {
+            reihenfolge: Number,
+            idGantt: String,
+            resource: String,
+            startDatum: { type: Date, default: null },
+            endDatum: { type: Date, default: null },
+            dauer: { type: Number, default: null },
+            statusInProzent: Number,
+            abhaengigkeitIdGantt: { type: String, default: null }
+        }
+    ]
 });
-
-var schritteSchema = mongoose.Schema({
-    idGantt: String,
-    resource: String,
-    startDatum: Date,
-    endDatum: Date,
-    dauer: Number,
-    statusInProzent: Number,
-    abhaengigkeitidGantt: String,
-    reihenfolge: Number,
-});
-
 
 var Projekte = mongoose.model('Projekte', projekteSchema);
-var Nutzer = mongoose.model('Nutzer', nutzerSchema);
-var Schritte = mongoose.model('Schritte', schritteSchema);
 
 Projekte.find(function (err, projekte) {
     if (projekte.length) {
@@ -39,7 +29,25 @@ Projekte.find(function (err, projekte) {
     /* nur wenn Projekte leer*/
     new Projekte({
         name: "Papierflieger",
-        beschreibung: "Es soll ein Papierflieger entwickelt werden."
+        beschreibung: "Es soll ein Papierflieger entwickelt werden.",
+        schritte: [
+            {
+                reihenfolge: 1,
+                idGantt: "1",
+                resource: "Resource1",
+                dauer: 12,
+                statusInProzent: 42,
+                abhaengigkeitIdGantt: "1"
+            },
+            {
+                reihenfolge: 2,
+                idGantt: "2",
+                resource: "Resource1",
+                dauer: 5,
+                statusInProzent: 0,
+                abhaengigkeitIdGantt: "1"
+            }
+        ]
 
     }).save();
 

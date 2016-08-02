@@ -1,4 +1,4 @@
-extends layout
+extends layouts/layout
 
 block content
   h1= title
@@ -6,3 +6,24 @@ block content
   each projekt in projekte
     p #{projekt.name}
     p #{projekt.beschreibung}
+    table
+      thead
+        tr: th Reihenfolge
+          th ID
+          th Resource
+          th Startdatum
+          th Enddatum
+          th Dauer
+          th Status in %
+          th ID Abhängigkeit
+      tbody
+        for arraySchritt in projekt.schritte
+          tr
+            td= arraySchritt.reihenfolge
+            td= arraySchritt.idGantt
+            td= arraySchritt.resource
+            td= arraySchritt.startDatum
+            td= arraySchritt.endDatum
+            td= arraySchritt.dauer
+            td= arraySchritt.statusInProzent
+            td= arraySchritt.abhaengigkeitIdGantt
