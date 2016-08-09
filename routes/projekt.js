@@ -7,11 +7,11 @@ controller = require('../controllers/projekte.js');
 
 router.get('/:id', function(req, res, next) {
     var id = req.params.id.trim();
-    controller.findProjektById(id,function(results) {
-        global.alleProjekte = results;
-        if (!results) results = [];
+    controller.findProjektById(id,function(result) {
+
+        if (!result) result = [];
         res.render('projekt', {
-            projekt: global.alleProjekte,
+            projekt: result,
             title: "Projekt ",
 
 
@@ -22,7 +22,6 @@ router.get('/:id', function(req, res, next) {
 /* GET projekt page.*/
 router.get('/', function(req, res, next) {
     controller.getProjekte(function(results) {
-        global.alleProjekte = results;
         if (!results) results = [];
         res.render('projekt', {
             projekte: global.alleProjekte,

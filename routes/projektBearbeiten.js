@@ -7,11 +7,10 @@ controller = require('../controllers/projekte.js');
 
 router.get('/:id', function(req, res, next) {
     var id = req.params.id.trim();
-    controller.findProjektById(id,function(results) {
-        global.alleProjekte = results;
-        if (!results) results = [];
+    controller.findProjektById(id,function(result) {
+        if (!result) result = [];
         res.render('projektBearbeiten', {
-            projekt: global.alleProjekte,
+            projekt: result,
             title: "Projekt bearbeiten",
 
         });
@@ -21,10 +20,9 @@ router.get('/:id', function(req, res, next) {
 /* GET projekt page.*/
 router.get('/', function(req, res, next) {
     controller.getProjekte(function(results) {
-        global.alleProjekte = results;
         if (!results) results = [];
         res.render('projektBearbeiten', {
-            projekte: global.alleProjekte,
+            projekte: results,
             title: "Projekte",
 
 

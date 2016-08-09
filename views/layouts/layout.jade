@@ -29,9 +29,9 @@ html(lang="de")
               a.dropdown-toggle(href='#', data-toggle='dropdown') Meine Projekte
                 b.caret
               ul.dropdown-menu
-                //for projekt in alleProjekte
-                  //li
-                  //a(href="/projekt/ {projekt._id}") {projekt.name} //# hinzufügen
+                for projekt in alleProjekte
+                  li
+                    a(href="/projekt/#{projekt._id}") #{projekt.name}
             li.divider-vertical
             li
               a(href='/neuesProjekt') Neues Projekt anlegen
