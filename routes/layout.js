@@ -8,10 +8,10 @@ controller = require('../controllers/projekte.js');
 router.get('/', function(req, res, next) {
   controller.getProjekte(function(results) {
     if (!results) results = [];
+    global.alleProjekte = results;
     res.render('layout', {
-      projekte: results,
+      projekte: global.alleProjekte,
       title: "Projekte",
-
 
     });
   });

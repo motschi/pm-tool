@@ -2,4 +2,84 @@ extends layouts/layout
 
 block content
     .container
-        h2 test
+        form.form-horizontal
+            fieldset
+                // Form Name
+                legend Neues Projekt anlegen
+                // Text input
+                .form-group
+                    label.col-md-4.control-label(for='projektname') Projektname
+                    .col-md-4
+                        input#projektname.form-control.input-md(name='projektname', type='text', placeholder='', required='')
+                // Textarea
+                .form-group
+                    label.col-md-4.control-label(for='projektbeschreibung') Projektbeschreibung
+                    .col-md-4
+                        textarea#projektbeschreibung.form-control(name='projektbeschreibung')
+
+                table.table
+                    thead
+                        tr: th Reihenfolge
+                            th ID
+                            th Name
+                            th Resource
+                            th Startdatum
+                            th Enddatum
+                            th Dauer
+                            th Status in %
+                            th ID Abhängigkeit
+                            th Reihe löschen
+                    tbody#tabelle
+
+                        tr
+                            td
+                                .form-group
+                                    label.col-md-12.control-label
+                                        input.form-control.input-md(type='number', placeholder='Reihenfolge')
+                            td
+                                .form-group
+                                    label.col-md-12.control-label
+                                        input.form-control.input-md(type='text', placeholder='ID')
+                            td
+                                .form-group
+                                    label.col-md-12.control-label
+                                        input.form-control.input-md(type='text', placeholder='Name')
+                            td
+                                .form-group
+                                    label.col-md-12.control-label
+                                        input.form-control.input-md(type='text', placeholder='Resourcee')
+                            td
+                                .form-group
+                                    label.col-md-12.control-label
+                                        input.form-control.input-md(type='date', placeholder='Startdatum')
+                            td
+                                .form-group
+                                    label.col-md-12.control-label
+                                        input.form-control.input-md(type='date', placeholder='Enddatum')
+                            td
+                                .form-group
+                                    label.col-md-12.control-label
+                                        input.form-control.input-md(type='number', placeholder='Dauer')
+                            td
+                                .form-group
+                                    label.col-md-12.control-label
+                                        input.form-control.input-md(type='number', placeholder='Status')
+                            td
+                                .form-group
+                                    label.col-md-12.control-label
+                                        input.form-control.input-md(type='text', placeholder='ID Abhaenigikeit')
+                            td
+                                .form-group
+                                    a(class='btn btn-danger', id='reiheLöschen', href='#') X
+                // Button Reihe hinzufuegen
+                a(class='btn btn-primary', id='reiheHinzufuegen', href='#') Reihe hinzufügen
+                    script.
+                        $("#reiheHinzufuegen").click(function () {
+                            console.log("klick");
+                            $("#tabelle").append("<tr> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Reihenfolge' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='ID' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='Name' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label' class='col-md-12 control-label'> <input type='text' placeholder='Resourcee' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='date' placeholder='Startdatum' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='date' placeholder='Enddatum' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Dauer' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Status' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='ID Abhaenigikeit' class='form-control input-md'/> </label> </div> </td><td> <div class='form-group'><a id='reiheLöschen' href='#' class='btn btn-danger'>X</a></div> </td> </tr>")
+                        })
+                // Button
+                .form-group
+                    label.col-md-4.control-label(for='')
+                    .col-md-4
+                        button.btn.btn-primary(id='', name='') Senden

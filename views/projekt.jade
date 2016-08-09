@@ -1,34 +1,47 @@
 extends layouts/layout
 
+
 block content
     .container
         h2 #{projekt.name}
+        a(class='btn btn-primary' href='/projektBearbeiten/#{projekt._id}') Bearbeiten
         p Letzte Änderung #{projekt.letzteAenderung}
         p #{projekt.beschreibung}
-        table
-            thead
-                tr: th Reihenfolge
-                    th ID
-                    th Name
-                    th Resource
-                    th Startdatum
-                    th Enddatum
-                    th Dauer
-                    th Status in %
-                    th ID Abhängigkeit
-            tbody
-                for arraySchritt in projekt.schritte
-                    tr
-                        td= arraySchritt.reihenfolge
-                        td= arraySchritt.idGantt
-                        td= arraySchritt.name
-                        td= arraySchritt.resource
-                        td= arraySchritt.startDatum
-                        td= arraySchritt.endDatum
-                        td= arraySchritt.dauer
-                        td= arraySchritt.statusInProzent
-                        td= arraySchritt.abhaengigkeitIdGantt
-        script(type='text/javascript').
-            var aktuellesProjekt = !{JSON.stringify(projekt).replace(/<\//g, '<\\/')};
-            erstelleChart(aktuellesProjekt);
-        #chart_div
+        if projekt.schritte[0]
+            ul.nav.nav-tabs
+                li.active(role="presentation")
+                    a(href="#gantt", data-toggle="tab") Gantt-Diagramm
+                li(role='presentation')
+                    a(href="#tabelle", data-toggle="tab") Tabelle
+
+            .tab-content
+                #gantt.tab-pane.fade.in.active
+                    script(type='text/javascript').
+                        var aktuellesProjekt = !{JSON.stringify(projekt).replace(/<\//g, '<\\/')};
+                        erstelleChart(aktuellesProjekt);
+                    #chart_div
+
+                #tabelle.tab-pane.fade
+                    table.table
+                        thead
+                            tr: th Reihenfolge
+                                th ID
+                                th Name
+                                th Resource
+                                th Startdatum
+                                th Enddatum
+                                th Dauer
+                                th Status in %
+                                th ID Abhängigkeit
+                        tbody
+                            for arraySchritt in projekt.schritte
+                                tr
+                                    td= arraySchritt.reihenfolge
+                                    td= arraySchritt.idGantt
+                                    td= arraySchritt.name
+                                    td= arraySchritt.resource
+                                    td= arraySchritt.startDatum
+                                    td= arraySchritt.endDatum
+                                    td= arraySchritt.dauer
+                                    td= arraySchritt.statusInProzent
+                                    td= arraySchritt.abhaengigkeitIdGantt

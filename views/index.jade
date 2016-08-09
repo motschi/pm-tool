@@ -3,7 +3,7 @@ extends layouts/layout
 block content
   .container
     h2 Meine Projekte
-    table
+    table.table
       thead
         tr
           th Projektname
@@ -15,7 +15,7 @@ block content
           tr
             td
               a(href="/projekt/#{projekt._id}") #{projekt.name}
-            td #{projekt.beschreibung.slice(0, 50)}...
+            td #{projekt.beschreibung.slice(0, 70)}...
             td #{moment(projekt.letzteAenderung).format('LLL')}
             //td #{moment(projekt.letzteAenderung).startOf('day').fromNow()}
 

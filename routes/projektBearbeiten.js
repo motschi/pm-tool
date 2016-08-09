@@ -10,10 +10,9 @@ router.get('/:id', function(req, res, next) {
     controller.findProjektById(id,function(results) {
         global.alleProjekte = results;
         if (!results) results = [];
-        res.render('projekt', {
+        res.render('projektBearbeiten', {
             projekt: global.alleProjekte,
-            title: "Projekt ",
-
+            title: "Projekt bearbeiten",
 
         });
     });
@@ -24,7 +23,7 @@ router.get('/', function(req, res, next) {
     controller.getProjekte(function(results) {
         global.alleProjekte = results;
         if (!results) results = [];
-        res.render('projekt', {
+        res.render('projektBearbeiten', {
             projekte: global.alleProjekte,
             title: "Projekte",
 

@@ -5,6 +5,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+
 var moment = require('moment');
 moment().format();
 moment.locale('de');
@@ -25,10 +26,10 @@ var layout = require('./routes/layout');
 var users = require('./routes/users');
 var projekt = require('./routes/projekt');
 var neuesProjekt = require('./routes/neuesProjekt');
+var projektBearbeiten = require('./routes/projektBearbeiten');
 
 var app = express();
 app.locals.moment = require('moment');
-
 
 // Schritt 4 middlewares
 app.use(cookieParser());
@@ -66,6 +67,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/projekt', projekt);
+app.use('/projektBearbeiten', projektBearbeiten);
 app.use('/neuesProjekt', neuesProjekt);
 
 
