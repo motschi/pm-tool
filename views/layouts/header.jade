@@ -1,5 +1,21 @@
-extends layout
-
-block header
-  h1 hallo
-  img(src="images/sefex_logo.jpg")/
+//- includes/header.jade
+#header
+  .navbar.navbar-default
+    .container
+      a.navbar-brand(href='#') SEFEX-Tool
+      ul.nav.navbar-nav
+        li.active
+          a(href='#') Startseite
+        li.dropdown
+          a.dropdown-toggle(href='#', data-toggle='dropdown') Meine Projekte
+            b.caret
+          ul.dropdown-menu
+            //for projekt in projekte
+              //li
+              //a(href="/projekt/ {projekt.id}") {projekt.name} //# wieder einfügen
+        li.divider-vertical
+        li
+          a(href='#') More
+        li
+          a(href='#') Options
+  img(src="../images/sefex_logo.jpg")/

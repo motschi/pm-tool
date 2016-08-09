@@ -1,29 +1,23 @@
 extends layouts/layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  each projekt in projekte
-    p #{projekt.name}
-    p #{projekt.beschreibung}
+  .container
+    h2 Meine Projekte
     table
       thead
-        tr: th Reihenfolge
-          th ID
-          th Resource
-          th Startdatum
-          th Enddatum
-          th Dauer
-          th Status in %
-          th ID Abhängigkeit
+        tr
+          th Projektname
+          th Kurzbeschreibung
+          th letzte Änderung
+
       tbody
-        for arraySchritt in projekt.schritte
+        for projekt in projekte
           tr
-            td= arraySchritt.reihenfolge
-            td= arraySchritt.idGantt
-            td= arraySchritt.resource
-            td= arraySchritt.startDatum
-            td= arraySchritt.endDatum
-            td= arraySchritt.dauer
-            td= arraySchritt.statusInProzent
-            td= arraySchritt.abhaengigkeitIdGantt
+            td
+              a(href="/projekt/#{projekt._id}") #{projekt.name}
+            td #{projekt.beschreibung.slice(0, 50)}...
+            td #{moment(projekt.letzteAenderung).format('LLL')}
+            //td #{moment(projekt.letzteAenderung).startOf('day').fromNow()}
+
+
+

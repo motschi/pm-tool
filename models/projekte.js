@@ -6,8 +6,10 @@ var projekteSchema = mongoose.Schema({
     letzteAenderung: { type: Date, default: Date.now },
     schritte: [
         {
+            _id: Number,
             reihenfolge: Number,
             idGantt: String,
+            name: String,
             resource: String,
             startDatum: { type: Date, default: null },
             endDatum: { type: Date, default: null },
@@ -34,14 +36,15 @@ Projekte.find(function (err, projekte) {
             {
                 reihenfolge: 1,
                 idGantt: "1",
+                name: "Schritt 1",
                 resource: "Resource1",
                 dauer: 12,
-                statusInProzent: 42,
-                abhaengigkeitIdGantt: "1"
+                statusInProzent: 42
             },
             {
                 reihenfolge: 2,
                 idGantt: "2",
+                name: "Schritt 2",
                 resource: "Resource1",
                 dauer: 5,
                 statusInProzent: 0,

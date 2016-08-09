@@ -14,6 +14,16 @@ var ProjekteController = {
 
         //return posts;
     },
-}
+
+    // FIND PROJEKT BY ID
+    findProjektById: function (id,callback) {
+        projekte.findOne({'_id': id}, function (err, projekt) {
+            if (!err) {
+                callback(projekt);
+            }
+        });
+    },
+    
+};
 
 module.exports = ProjekteController;
