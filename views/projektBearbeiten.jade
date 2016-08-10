@@ -10,7 +10,7 @@ block content
                 .form-group
                     label.col-md-4.control-label(for='projektname') Projektname
                     .col-md-4
-                        input#projektname.form-control.input-md(name='projektname', type='text', placeholder='', required='', value='#{projekt.name}')
+                        input#projektname.form-control.input-md(name='projektname', type='text', value='#{projekt.name}')
                 // Textarea
                 .form-group
                     label.col-md-4.control-label(for='projektbeschreibung') Projektbeschreibung
@@ -34,95 +34,97 @@ block content
                             tr
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='number', placeholder='Reihenfolge')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md( type='number', placeholder='Reihenfolge')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='text', placeholder='ID')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='text', placeholder='ID')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='text', placeholder='Name')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='text', placeholder='Name')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='text', placeholder='Resourcee')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='text', placeholder='Resourcee')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='date', placeholder='Startdatum')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='date', placeholder='Startdatum')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='date', placeholder='Enddatum')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='date', placeholder='Enddatum')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='number', placeholder='Dauer')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='number', placeholder='Dauer')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='number', placeholder='Status')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='number', placeholder='Status')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='text', placeholder='ID Abhaenigikeit')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='text', placeholder='ID Abhaenigikeit')
                                 td
                                     .form-group
-                                        a(class='btn btn-danger', id='reiheLöschen', href='#') X
+                                        a(class='btn btn-danger reiheLoeschen', href='#') X
 
                         for arraySchritt in projekt.schritte
                             tr
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='number', placeholder='Reihenfolge', value='#{arraySchritt.reihenfolge}')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='number', placeholder='Reihenfolge', value='#{arraySchritt.reihenfolge}')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='text', placeholder='ID', value='#{arraySchritt.idGantt}')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='text', placeholder='ID', value='#{arraySchritt.idGantt}')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='text', placeholder='Name', value='#{arraySchritt.name}')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='text', placeholder='Name', value='#{arraySchritt.name}')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='text', placeholder='Resourcee', value='#{arraySchritt.resource}')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='text', placeholder='Resourcee', value='#{arraySchritt.resource}')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='date', placeholder='Startdatum', value='#{arraySchritt.startDatum}')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='date', placeholder='Startdatum', value='#{arraySchritt.startDatum}')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='date', placeholder='Enddatum', value='#{arraySchritt.endDatum}')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='date', placeholder='Enddatum', value='#{arraySchritt.endDatum}')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='number', placeholder='Dauer', value='#{arraySchritt.dauer}')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='number', placeholder='Dauer', value='#{arraySchritt.dauer}')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='number', placeholder='Status', value='#{arraySchritt.status}')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='number', placeholder='Status', value='#{arraySchritt.status}')
                                 td
                                     .form-group
-                                        label.col-md-12.control-label(for='')
-                                            input.form-control.input-md(id='', name='', type='text', placeholder='ID Abhaenigikeit', value='#{arraySchritt.abhaengigkeitIdGantt}')
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='text', placeholder='ID Abhaenigikeit', value='#{arraySchritt.abhaengigkeitIdGantt}')
                                 td
                                     .form-group
-                                        a(class='btn btn-danger', id='reiheLöschen', href='#') X
+                                        a(class='btn btn-danger reiheLoeschen', href='#') X
                 // Button Reihe hinzufuegen
                 a(class='btn btn-primary', id='reiheHinzufuegen', href='#') Reihe hinzufügen
                     script.
-                        $("#reiheHinzufuegen").click(function () {
+                        $(document).on("click", "#reiheHinzufuegen", function () {
                             console.log("klick");
-                            $("#tabelle").append("<tr> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Reihenfolge' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='ID' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='Name' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label' class='col-md-12 control-label'> <input type='text' placeholder='Resourcee' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='date' placeholder='Startdatum' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='date' placeholder='Enddatum' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Dauer' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Status' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='ID Abhaenigikeit' class='form-control input-md'/> </label> </div> </td><td> <div class='form-group'><a id='reiheLöschen' href='#' class='btn btn-danger'>X</a></div> </td> </tr>")
-
+                            $("#tabelle").append("<tr> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Reihenfolge' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='ID' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='Name' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label' class='col-md-12 control-label'> <input type='text' placeholder='Resourcee' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='date' placeholder='Startdatum' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='date' placeholder='Enddatum' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Dauer' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Status' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='ID Abhaenigikeit' class='form-control input-md'/> </label> </div> </td><td> <div class='form-group'><a href='#' class='btn btn-danger reiheLoeschen'>X</a></div> </td> </tr>")
                         })
+                        $(document).on("click", ".reiheLoeschen", function () {
+                            $(this).closest("tr").remove();
+                        });
                 // Button
                 .form-group
-                    label.col-md-4.control-label(for='')
+                    label.col-md-4.control-label
                     .col-md-4
-                        button.btn.btn-primary(id='', name='') Speichern
+                        button.btn.btn-primary Speichern

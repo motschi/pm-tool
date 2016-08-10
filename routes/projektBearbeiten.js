@@ -17,7 +17,7 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
-/* GET projekt page.*/
+/* GET projekt page.
 router.get('/', function(req, res, next) {
     controller.getProjekte(function(results) {
         if (!results) results = [];
@@ -29,5 +29,5 @@ router.get('/', function(req, res, next) {
         });
     });
 });
-
+ */
 module.exports = router;

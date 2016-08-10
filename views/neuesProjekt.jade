@@ -10,7 +10,7 @@ block content
                 .form-group
                     label.col-md-4.control-label(for='projektname') Projektname
                     .col-md-4
-                        input#projektname.form-control.input-md(name='projektname', type='text', placeholder='', required='')
+                        input#projektname.form-control.input-md(name='projektname', type='text')
                 // Textarea
                 .form-group
                     label.col-md-4.control-label(for='projektbeschreibung') Projektbeschreibung
@@ -70,16 +70,19 @@ block content
                                         input.form-control.input-md(type='text', placeholder='ID Abhaenigikeit')
                             td
                                 .form-group
-                                    a(class='btn btn-danger', id='reiheLöschen', href='#') X
+                                    a(class='btn btn-danger reiheLoeschen', href='#') X
                 // Button Reihe hinzufuegen
                 a(class='btn btn-primary', id='reiheHinzufuegen', href='#') Reihe hinzufügen
                     script.
-                        $("#reiheHinzufuegen").click(function () {
+                        $(document).on("click", "#reiheHinzufuegen", function () {
                             console.log("klick");
-                            $("#tabelle").append("<tr> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Reihenfolge' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='ID' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='Name' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label' class='col-md-12 control-label'> <input type='text' placeholder='Resourcee' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='date' placeholder='Startdatum' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='date' placeholder='Enddatum' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Dauer' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Status' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='ID Abhaenigikeit' class='form-control input-md'/> </label> </div> </td><td> <div class='form-group'><a id='reiheLöschen' href='#' class='btn btn-danger'>X</a></div> </td> </tr>")
+                            $("#tabelle").append("<tr> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Reihenfolge' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='ID' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='Name' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label' class='col-md-12 control-label'> <input type='text' placeholder='Resourcee' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='date' placeholder='Startdatum' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='date' placeholder='Enddatum' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Dauer' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Status' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='ID Abhaenigikeit' class='form-control input-md'/> </label> </div> </td><td> <div class='form-group'><a href='#' class='btn btn-danger reiheLoeschen'>X</a></div> </td> </tr>")
                         })
+                        $(document).on("click", ".reiheLoeschen", function () {
+                            $(this).closest("tr").remove();
+                        });
                 // Button
                 .form-group
-                    label.col-md-4.control-label(for='')
+                    label.col-md-4.control-label
                     .col-md-4
-                        button.btn.btn-primary(id='', name='') Senden
+                        button.btn.btn-primary Senden

@@ -22,7 +22,6 @@ var session = require('express-session');
 
 
 var routes = require('./routes/index');
-var layout = require('./routes/layout');
 var users = require('./routes/users');
 var projekt = require('./routes/projekt');
 var neuesProjekt = require('./routes/neuesProjekt');

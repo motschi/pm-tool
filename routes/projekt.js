@@ -19,17 +19,4 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
-/* GET projekt page.*/
-router.get('/', function(req, res, next) {
-    controller.getProjekte(function(results) {
-        if (!results) results = [];
-        res.render('projekt', {
-            projekte: global.alleProjekte,
-            title: "Projekte",
-
-
-        });
-    });
-});
-
 module.exports = router;
