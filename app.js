@@ -11,7 +11,7 @@ moment().format();
 moment.locale('de');
 
 var passport = require('passport');
-
+/*
 // This is the file we created in step 2.
 // This will configure Passport to use Auth0
 var strategy = require('./models/setup-passport');
@@ -19,7 +19,7 @@ var strategy = require('./models/setup-passport');
 // Session and cookies middlewares to keep user logged in
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-
+*/
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -29,7 +29,7 @@ var projektBearbeiten = require('./routes/projektBearbeiten');
 
 var app = express();
 app.locals.moment = require('moment');
-
+/*
 // Schritt 4 middlewares
 app.use(cookieParser());
 // See express session docs for information on the options: https://github.com/expressjs/session
@@ -47,7 +47,7 @@ app.get('/callback',
       }
       res.redirect("/user");
     });
-
+*/
 
 
 // view engine setup
@@ -58,8 +58,8 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+/*app.use(cookieParser());*/
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Routen

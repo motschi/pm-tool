@@ -17,17 +17,18 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
-/* GET projekt page.
-router.get('/', function(req, res, next) {
-    controller.getProjekte(function(results) {
-        if (!results) results = [];
-        res.render('projektBearbeiten', {
-            projekte: results,
-            title: "Projekte",
+// POST UPDATE PROJEKT
+router.post('/updateProjekt', function (req, res) {
+    var projektname = req.body.projektname;
+    var projektbeschreibung = req.body.projektbeschreibung;
+    var _id = req.body._id;
+    var schritte = Array.prototype.slice.call(req.body.schritte);
 
 
-        });
+    controller.updateProjekt(_id, projektname, projektbeschreibung, schritte, function () {
+        res.redirect('/projekt/'+_id );
     });
+
 });
- */
+
 module.exports = router;

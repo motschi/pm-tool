@@ -1,3 +1,4 @@
+/*
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
 
@@ -25,3 +26,4 @@ passport.deserializeUser(function(user, done) {
 });
 
 module.exports = strategy;
+    */

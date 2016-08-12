@@ -5,6 +5,22 @@ block content
     .container
         h2 #{projekt.name}
         a(class='btn btn-primary' href='/projektBearbeiten/#{projekt._id}') Bearbeiten
+        button.btn.btn-danger(type='button', data-toggle='modal', data-target='#meinModal') Projekt löschen
+        // Modal
+        #meinModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='meinModalLabel')
+            .modal-dialog(role='document')
+                .modal-content
+                    .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-label='Schließen')
+                            span(aria-hidden='true') ×
+                        h4#meinModalLabel.modal-title Projekt löschen
+                    .modal-body
+                        | Sind sie sicher das sie das Projekt #{projekt.name} löschen möchten?
+                    .modal-footer
+                        form(method='post',action='/projekt/projektLoeschen')
+                            input(hidden, name='_id', value='#{projekt._id}')
+                            button.btn.btn-default(type='button', data-dismiss='modal') Abbrechen
+                            button.btn.btn-primary(type='submit') Projekt löschen
         p Letzte Änderung #{projekt.letzteAenderung}
         p #{projekt.beschreibung}
         if projekt.schritte[0]
@@ -16,16 +32,16 @@ block content
 
             .tab-content
                 #gantt.tab-pane.fade.in.active
-                    script(type='text/javascript').
+                    script.
                         var aktuellesProjekt = !{JSON.stringify(projekt).replace(/<\//g, '<\\/')};
                         erstelleChart(aktuellesProjekt);
                     #chart_div
 
+
                 #tabelle.tab-pane.fade
                     table.table
                         thead
-                            tr: th Reihenfolge
-                                th ID
+                            tr: th ID
                                 th Name
                                 th Resource
                                 th Startdatum
@@ -34,9 +50,12 @@ block content
                                 th Status in %
                                 th ID Abhängigkeit
                         tbody
+                            script.
+                                var i = 0;
                             for arraySchritt in projekt.schritte
+                                script.
+                                    i++;
                                 tr
-                                    td= arraySchritt.reihenfolge
                                     td= arraySchritt.idGantt
                                     td= arraySchritt.name
                                     td= arraySchritt.resource

@@ -16,4 +16,18 @@ router.get('/', function(req, res, next) {
   });
 });
 
+// POST ADD PROJEKT
+router.post('/addProjekt', function (req, res) {
+  var projektname = req.body.projektname;
+  var projektbeschreibung = req.body.projektbeschreibung;
+  var schritte = Array.prototype.slice.call(req.body.schritte);
+
+
+  controller.addProjekt(projektname, projektbeschreibung, schritte, function () {
+    res.redirect('/');
+  });
+
+});
+
+
 module.exports = router;

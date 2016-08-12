@@ -6,8 +6,6 @@ var projekteSchema = mongoose.Schema({
     letzteAenderung: { type: Date, default: Date.now },
     schritte: [
         {
-            _id: Number,
-            reihenfolge: Number,
             idGantt: String,
             name: String,
             resource: String,
@@ -15,7 +13,7 @@ var projekteSchema = mongoose.Schema({
             endDatum: { type: Date, default: null },
             dauer: { type: Number, default: null },
             statusInProzent: Number,
-            abhaengigkeitIdGantt: { type: String, default: null }
+            abhaengigkeitIdGantt: { type: String, default: "" }
         }
     ]
 });
@@ -34,7 +32,6 @@ Projekte.find(function (err, projekte) {
         beschreibung: "Es soll ein Papierflieger entwickelt werden.",
         schritte: [
             {
-                reihenfolge: 1,
                 idGantt: "1",
                 name: "Schritt 1",
                 resource: "Resource1",
@@ -42,7 +39,6 @@ Projekte.find(function (err, projekte) {
                 statusInProzent: 42
             },
             {
-                reihenfolge: 2,
                 idGantt: "2",
                 name: "Schritt 2",
                 resource: "Resource1",
@@ -56,7 +52,24 @@ Projekte.find(function (err, projekte) {
 
     new Projekte({
         name: "Beispielprojekt",
-        beschreibung: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+        beschreibung: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+        schritte: [
+            {
+                idGantt: "21",
+                name: "Schritt 21",
+                resource: "Resource1",
+                dauer: 12,
+                statusInProzent: 42
+            },
+            {
+                idGantt: "22",
+                name: "Schritt 22",
+                resource: "Resource2",
+                dauer: 5,
+                statusInProzent: 0,
+                abhaengigkeitIdGantt: "21"
+            }
+        ]
 
     }).save();
 

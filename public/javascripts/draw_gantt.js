@@ -15,8 +15,16 @@ function erstelleChart(projekt) {
         var schritte = [];
         for (var i=0; i<projekt.schritte.length; i++)
         {
+            if (projekt.schritte[i].startDatum != null)
+            {   var startDatum = new Date(projekt.schritte[i].startDatum)
+
+            }
+           if (projekt.schritte[i].endDatum != null)
+            {
+            var endDatum = new Date(projekt.schritte[i].endDatum)
+            }
             schritte.push(
-                [projekt.schritte[i].idGantt, projekt.schritte[i].name, projekt.schritte[i].resource, projekt.schritte[i].startDatum, projekt.schritte[i].endDatum, daysToMilliseconds(projekt.schritte[i].dauer), projekt.schritte[i].statusInProzent, projekt.schritte[i].abhaengigkeitIdGantt]
+                [projekt.schritte[i].idGantt, projekt.schritte[i].name, projekt.schritte[i].resource, startDatum, endDatum, daysToMilliseconds(projekt.schritte[i].dauer), projekt.schritte[i].statusInProzent, projekt.schritte[i].abhaengigkeitIdGantt]
             )
         }
         return schritte;
@@ -42,9 +50,10 @@ function erstelleChart(projekt) {
             schritteArray
 
         );
-
+        var hoehe = schritteArray.length*42+50;
+        console.log(hoehe)
         var options = {
-            height: 600,
+            height: hoehe,
             gantt: {
 
             }

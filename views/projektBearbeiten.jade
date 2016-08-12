@@ -2,11 +2,14 @@ extends layouts/layout
 
 block content
     .container
-        form.form-horizontal
+        script.
+            var i = 1;
+        form.form-horizontal(method='post',action='/projektBearbeiten/updateProjekt')
             fieldset
                 // Form Name
                 legend #{projekt.name} Projekt bearbeiten
                 // Text input
+                input(hidden, class='ProjektId',name='_id', value='#{projekt._id}')
                 .form-group
                     label.col-md-4.control-label(for='projektname') Projektname
                     .col-md-4
@@ -19,8 +22,7 @@ block content
 
                 table.table
                     thead
-                        tr: th Reihenfolge
-                            th ID
+                        tr: th ID
                             th Name
                             th Resource
                             th Startdatum
@@ -31,100 +33,114 @@ block content
                             th Reihe löschen
                     tbody#tabelle
                         unless projekt.schritte[0]
-                            tr
+                            tr.reihe
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md( type='number', placeholder='Reihenfolge')
+                                            input.form-control.input-md(type='number', placeholder='ID',name='idGantt')
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='text', placeholder='ID')
+                                            input.form-control.input-md(type='text', placeholder='Name',name='name')
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='text', placeholder='Name')
+                                            input.form-control.input-md(type='text', placeholder='Resource',name='resource')
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='text', placeholder='Resourcee')
+                                            input.form-control.input-md(type='date', placeholder='Startdatum',name='startDatum')
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='date', placeholder='Startdatum')
+                                            input.form-control.input-md(type='date', placeholder='Enddatum',name='endDatum')
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='date', placeholder='Enddatum')
+                                            input.form-control.input-md(type='number', placeholder='Dauer',name='dauer')
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='number', placeholder='Dauer')
+                                            input.form-control.input-md(type='number', placeholder='Status',name='statusInProzent')
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='number', placeholder='Status')
-                                td
-                                    .form-group
-                                        label.col-md-12.control-label
-                                            input.form-control.input-md(type='text', placeholder='ID Abhaenigikeit')
+                                            input.form-control.input-md(type='text', placeholder='ID Abhaenigikeit',name='abhaengigkeitIdGantt')
                                 td
                                     .form-group
                                         a(class='btn btn-danger reiheLoeschen', href='#') X
 
                         for arraySchritt in projekt.schritte
-                            tr
+                            tr.reihe
+                                //td
+                                    .form-group
+                                        label.col-md-12.control-label
+                                            input.form-control.input-md(type='number', placeholder='Reihenfolge',name='reihenfolge', value='#{arraySchritt.reihenfolge}')
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='number', placeholder='Reihenfolge', value='#{arraySchritt.reihenfolge}')
+                                            input.form-control.input-md(type='text', placeholder='ID',name='idGantt', value='#{arraySchritt.idGantt}')
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='text', placeholder='ID', value='#{arraySchritt.idGantt}')
+                                            input.form-control.input-md(type='text', placeholder='Name',name='name', value='#{arraySchritt.name}')
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='text', placeholder='Name', value='#{arraySchritt.name}')
+                                            input.form-control.input-md(type='text', placeholder='Resource',name='resource', value='#{arraySchritt.resource}')
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='text', placeholder='Resourcee', value='#{arraySchritt.resource}')
+                                            input.form-control.input-md(type='date', placeholder='Startdatum',name='startDatum', value='#{moment(arraySchritt.startDatum).format("YYYY-MM-DD")}'/*umwandeln YYYY-MM-DD*/)
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='date', placeholder='Startdatum', value='#{arraySchritt.startDatum}')
+                                            input.form-control.input-md(type='date', placeholder='Enddatum',name='endDatum', value='#{moment(arraySchritt.endDatum).format("YYYY-MM-DD")}' /*umwandeln YYYY-MM-DD*/)
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='date', placeholder='Enddatum', value='#{arraySchritt.endDatum}')
+                                            input.form-control.input-md(type='number', placeholder='Dauer',name='dauer', value='#{arraySchritt.dauer}')
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='number', placeholder='Dauer', value='#{arraySchritt.dauer}')
+                                            input.form-control.input-md(type='number', placeholder='Status',name='statusInProzent', value='#{arraySchritt.statusInProzent}')
                                 td
                                     .form-group
                                         label.col-md-12.control-label
-                                            input.form-control.input-md(type='number', placeholder='Status', value='#{arraySchritt.status}')
-                                td
-                                    .form-group
-                                        label.col-md-12.control-label
-                                            input.form-control.input-md(type='text', placeholder='ID Abhaenigikeit', value='#{arraySchritt.abhaengigkeitIdGantt}')
+                                            input.form-control.input-md(type='text', placeholder='ID Abhaenigikeit',name='abhaengigkeitIdGantt', value= '#{arraySchritt.abhaengigkeitIdGantt}')
                                 td
                                     .form-group
                                         a(class='btn btn-danger reiheLoeschen', href='#') X
                 // Button Reihe hinzufuegen
                 a(class='btn btn-primary', id='reiheHinzufuegen', href='#') Reihe hinzufügen
                     script.
+                        var i = 0;
                         $(document).on("click", "#reiheHinzufuegen", function () {
-                            console.log("klick");
-                            $("#tabelle").append("<tr> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Reihenfolge' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='ID' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='Name' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label' class='col-md-12 control-label'> <input type='text' placeholder='Resourcee' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='date' placeholder='Startdatum' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='date' placeholder='Enddatum' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Dauer' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Status' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='ID Abhaenigikeit' class='form-control input-md'/> </label> </div> </td><td> <div class='form-group'><a href='#' class='btn btn-danger reiheLoeschen'>X</a></div> </td> </tr>")
+
+                            $("#tabelle").append("<tr class='reihe'> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='ID' name='idGantt' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='Name' name='name' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label' class='col-md-12 control-label'> <input type='text' placeholder='Resource' name='resource' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='date' placeholder='Startdatum' name='startDatum' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='date' placeholder='Enddatum' name='endDatum' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Dauer' name='dauer' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='number' placeholder='Status' name='statusInProzent' class='form-control input-md'/> </label> </div> </td> <td> <div class='form-group'> <label class='col-md-12 control-label'> <input type='text' placeholder='ID Abhaenigikeit' name='abhaengigkeitIdGantt' class='form-control input-md'/> </label> </div> </td><td> <div class='form-group'><a href='#' class='btn btn-danger reiheLoeschen'>X</a></div> </td> </tr>")
+
+
                         })
                         $(document).on("click", ".reiheLoeschen", function () {
                             $(this).closest("tr").remove();
+
+                        });
+
+                        $(document).on("click", "#sichern", function () {
+                            $("[name='idGantt']").each(function (index) {
+                                var reihenfolge = ($(this).val());
+                                $(this).parent().parent().parent().parent().attr('class', 'reihe' + index);
+                                $(".reihe" + index).find("[name='idGantt']").attr('name', 'schritte[' + reihenfolge + '][idGantt]');
+                                $(".reihe" + index).find("[name='name']").attr('name', 'schritte[' + reihenfolge + '][name]');
+                                $(".reihe" + index).find("[name='resource']").attr('name', 'schritte[' + reihenfolge + '][resource]');
+                                $(".reihe" + index).find("[name='startDatum']").attr('name', 'schritte[' + reihenfolge + '][startDatum]');
+                                $(".reihe" + index).find("[name='endDatum']").attr('name', 'schritte[' + reihenfolge + '][endDatum]');
+                                $(".reihe" + index).find("[name='dauer']").attr('name', 'schritte[' + reihenfolge + '][dauer]');
+                                $(".reihe" + index).find("[name='statusInProzent']").attr('name', 'schritte[' + reihenfolge + '][statusInProzent]');
+                                $(".reihe" + index).find("[name='abhaengigkeitIdGantt']").attr('name', 'schritte[' + reihenfolge + '][abhaengigkeitIdGantt]');
+                                console.log(index);
+                            });
+                            $("form").submit();
                         });
                 // Button
-                .form-group
-                    label.col-md-4.control-label
-                    .col-md-4
-                        button.btn.btn-primary Speichern
+                a(class='btn btn-success', id='sichern', href='#') Speichern

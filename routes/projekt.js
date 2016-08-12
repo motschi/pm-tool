@@ -4,6 +4,7 @@
 var express = require('express');
 var router = express.Router();
 controller = require('../controllers/projekte.js');
+var moment = require('moment')
 
 router.get('/:id', function(req, res, next) {
     var id = req.params.id.trim();
@@ -17,6 +18,17 @@ router.get('/:id', function(req, res, next) {
 
         });
     });
+});
+
+// POST REMOVE PROJKET
+router.post('/projektLoeschen', function (req, res) {
+    var id = req.body._id;
+
+    controller.removeProjekt(id, function () {
+        res.redirect('/');
+    });
+
+
 });
 
 module.exports = router;
